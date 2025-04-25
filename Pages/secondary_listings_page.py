@@ -31,5 +31,5 @@ class SecondaryListingsPage(Page):
     def click_apply_filter_button(self):
         self.wait_until_clickable_click(*self.APPLY_FILTER_BTN)
 
-
-    def verify_prices_in_range(self):
+    #
+    # def verify_prices_in_range(self):
