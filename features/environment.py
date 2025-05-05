@@ -40,12 +40,40 @@ def browser_init(context, browser="chrome", headless=False):
     context.driver.wait = WebDriverWait(context.driver, timeout=10)
     context.app = Application(context.driver)
 
+    # ##BROWSERSTACK CONFIGS#####
+    # USERNAME = "jordanraivitch_lvOHgx"
+    # ACCESS_KEY = "UVKDzSyHHQqZAPP7JLBW"
+    #
+    # BROWSERSTACK_URL = f"http://{USERNAME}:{ACCESS_KEY}@hub-cloud.browserstack.com/wd/hub"
+    #
+    # # ✅ Set desired capabilities using Options
+    # options = webdriver.ChromeOptions()
+    # options.set_capability('os', 'Windows')
+    # options.set_capability('os_version', '11')
+    # options.set_capability('browser', 'Chrome')
+    # options.set_capability('browser_version', 'latest')
+    # options.set_capability('name', 'Behave Test - Chrome on Windows')
+    # options.set_capability('build', 'Behave Tests Build 1')
+    # options.set_capability('browserstack.debug', True)
+    # options.set_capability('browserstack.console', 'errors')
+    # options.set_capability('browserstack.networkLogs', True)
+    #
+    # # ✅ Start remote driver with options
+    # context.driver = webdriver.Remote(
+    #     command_executor=BROWSERSTACK_URL,
+    #     options=options
+    # )
+    #
+    # context.driver.implicitly_wait(10)
+    # context.driver.maximize_window()
+    # context.wait = WebDriverWait(context.driver, timeout=10)
+    # context.app = Application(context.driver)
 
 def before_scenario(context, scenario):
     print('\nStarted scenario:', scenario.name)
 
     # Set your desired config here:
-    browser_init(context, browser="chrome", headless=True)
+    browser_init(context, browser="chrome", headless=False)
 
 
 def before_step(context, step):
