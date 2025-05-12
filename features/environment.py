@@ -7,7 +7,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 
 from app.application import Application
-
+from Support.logger import logger
 
 def browser_init(context, browser="chrome", headless=False):
     """
@@ -71,17 +71,19 @@ def browser_init(context, browser="chrome", headless=False):
 
 def before_scenario(context, scenario):
     print('\nStarted scenario:', scenario.name)
-
+    logger.info(f'Started scenario: {scenario.name}')
     # Set your desired config here:
     browser_init(context, browser="chrome", headless=False)
 
 
 def before_step(context, step):
+    logger.info(f'Started step: {step.name}')
     print('\nStarted step:', step)
 
 
 def after_step(context, step):
     if step.status == 'failed':
+        logger.warning(f'Step failed with status: {step}')
         print('\nStep failed:', step)
 
 
